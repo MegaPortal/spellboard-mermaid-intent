@@ -15,7 +15,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen min-w-screen">
       <div className="">
-        <Mermaid />
+        <Suspense>
+          <Mermaid />
+        </Suspense>
       </div>
     </main>
   );
@@ -45,24 +47,21 @@ function Mermaid() {
   }, [isLoaded]);
 
   return <>
-    <Suspense>
-      <div className="flex flex-col items-center justify-center w-screen h-screen">
-        <div className={`flex flex-col items-center justify-center ${isFull ? `` : `w-[300px] h-[300px]`} ${isFull ? "" : "cursor-pointer"} overflow-auto`}
-          onClick={() => {
-            if (isFull) {
-              return;
-            }
-            
-            const href = window.location.href;
-            window.open(href + (href.includes("?") ? "&" : "?") + "full=true", "_blank");
-          }}
-        >
-          <div className={`flex flex-col items-center justify-center mermaid transition w-screen duration-500 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`} suppressHydrationWarning>
-            {graphCode ? graphCode : HELLO}
-          </div>
+    <div className="flex flex-col items-center justify-center w-screen h-screen">
+      <div className={`flex flex-col items-center justify-center ${isFull ? `` : `w-[300px] h-[300px]`} ${isFull ? "" : "cursor-pointer"} overflow-auto`}
+        onClick={() => {
+          if (isFull) {
+            return;
+          }
+
+          const href = window.location.href;
+          window.open(href + (href.includes("?") ? "&" : "?") + "full=true", "_blank");
+        }}
+      >
+        <div className={`flex flex-col items-center justify-center mermaid transition w-screen duration-500 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`} suppressHydrationWarning>
+          {graphCode ? graphCode : HELLO}
         </div>
       </div>
-
-    </Suspense>
+    </div>
   </>
 }
