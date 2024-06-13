@@ -1,0 +1,34 @@
+{
+    "name": "Mermaid Graph Generator",
+    "description": "A simple Tool to generate mermaid graphs.",
+    "intents": [
+        {
+            "name": "generate_graph",
+            "description": "Generate a mermaid graph by providing the graph definition. for example: graph TD; A-->B;",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "graph_code": {
+                        "type": "string",
+                        "description": "The graph definition in mermaid syntax."
+                    }
+                },
+                "required": [
+                    "graph_code"
+                ]
+            },
+            "async": true,
+            "link": "/?graph_code={graph_code}",
+            "example": "/?graph_code=graph TD; A-->B;",
+            "returns": {
+                "type": "object",
+                "properties": {
+                    "response": {
+                        "type": "string",
+                        "description": "The generated graph in SVG format."
+                    }
+                }
+            }
+        }
+    ]
+}
