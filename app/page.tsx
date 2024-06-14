@@ -37,14 +37,14 @@ function Mermaid() {
 
   useEffect(() => {
 
-    if (isLoaded) {
+    if (isLoaded || !graphCode) {
       return;
     }
 
     mermaid.contentLoaded();
 
     setIsLoaded(true);
-  }, [isLoaded]);
+  }, [graphCode, isLoaded]);
 
   return <>
     <div className="flex flex-col items-center justify-center w-screen h-screen">
