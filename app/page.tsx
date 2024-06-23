@@ -7,10 +7,6 @@ import mermaid from "mermaid";
 import { Suspense, use, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-mermaid.initialize({
-  startOnLoad: true
-});
-
 export default function Home() {
   return (
     <main className="flex min-h-screen min-w-screen">
@@ -32,8 +28,8 @@ function Mermaid() {
 
   const searchParams = useSearchParams();
 
-  const graphCode = searchParams.get("graph_code");
-  const isFull = searchParams.get("full");
+  const graphCode = searchParams?.get("graph_code");
+  const isFull = searchParams?.get("full");
 
   useEffect(() => {
 
@@ -41,7 +37,9 @@ function Mermaid() {
       return;
     }
 
-    mermaid.contentLoaded();
+    mermaid.initialize({
+      startOnLoad: true
+    });
 
     setIsLoaded(true);
   }, [graphCode, isLoaded]);
