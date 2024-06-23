@@ -37,13 +37,13 @@ function Mermaid() {
       return;
     }
 
+    console.log("mermaid content loaded");
+    console.log("graphCode", document.getElementById("mermaid-container")?.innerText);
+
     mermaid.initialize({
       startOnLoad: true
     });
     mermaid.contentLoaded();
-
-    console.log("mermaid content loaded");
-    console.log("graphCode", document.getElementById("mermaid-container")?.innerHTML);
 
     setIsLoaded(true);
   }, [graphCode, isLoaded]);
