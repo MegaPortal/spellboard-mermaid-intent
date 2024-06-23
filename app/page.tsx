@@ -40,6 +40,7 @@ function Mermaid() {
     mermaid.initialize({
       startOnLoad: true
     });
+    mermaid.contentLoaded();
 
     setIsLoaded(true);
   }, [graphCode, isLoaded]);
