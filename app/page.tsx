@@ -44,9 +44,9 @@ function Mermaid() {
         startOnLoad: true
       });
       mermaid.contentLoaded();
-    }, 1000);
+      setIsLoaded(true);
+    }, 300);
 
-    setIsLoaded(true);
   }, [graphCode, isLoaded]);
 
   return <>
