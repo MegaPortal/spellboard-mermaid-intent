@@ -42,6 +42,9 @@ function Mermaid() {
     });
     mermaid.contentLoaded();
 
+    console.log("mermaid content loaded");
+    console.log("graphCode", document.getElementById("mermaid-container")?.innerHTML);
+
     setIsLoaded(true);
   }, [graphCode, isLoaded]);
 
@@ -57,7 +60,7 @@ function Mermaid() {
           window.open(href + (href.includes("?") ? "&" : "?") + "full=true", "_blank");
         }}
       >
-        <div className={`flex flex-col items-center justify-center mermaid transition w-screen duration-500 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`} suppressHydrationWarning>
+        <div id="mermaid-container" className={`flex flex-col items-center justify-center mermaid transition w-screen duration-500 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`} suppressHydrationWarning>
           {graphCode ? graphCode : HELLO}
         </div>
       </div>
